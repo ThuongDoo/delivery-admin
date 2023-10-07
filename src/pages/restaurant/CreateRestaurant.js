@@ -1,12 +1,19 @@
-import React, { useEffect } from "react";
-import { Formik, Form } from "formik";
+import React from "react";
 import RestaurantForm from "../../components/RestaurantForm";
 import api from "../../services/api";
-import { useNavigate, useSubmit } from "react-router-dom";
+import { useNavigate, useRouteLoaderData, useSubmit } from "react-router-dom";
 
 function CreateRestaurant() {
   const navigate = useNavigate();
   const submit = useSubmit();
+  const { user } = useRouteLoaderData("root");
+  const data = {
+    name: "",
+    image: "",
+    description: "",
+    address: "",
+    user: user.userId,
+  };
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
@@ -21,7 +28,7 @@ function CreateRestaurant() {
   };
   return (
     <div>
-      <RestaurantForm onSubmit={handleSubmit} />
+      <RestaurantForm data={data} onSubmit={handleSubmit} isCreate />
     </div>
   );
 }

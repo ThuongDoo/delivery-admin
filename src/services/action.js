@@ -9,7 +9,21 @@ export async function restaurantAction({ request }) {
 export async function deleteRestaurantAction({ request }) {
   const formData = await request.formData();
   const id = formData.get("restaurantId");
-  console.log(id);
   await api.delete(`restaurants/${id}`);
   return redirect("/");
+}
+
+export async function foodAction({ request }) {
+  console.log("request");
+  console.log(request);
+  const food = await request.formData();
+  return { food };
+}
+
+export async function userAction({ request }) {
+  const user = await request.formData();
+  const role = user.get("role");
+  console.log(role);
+  console.log("action");
+  return { user };
 }

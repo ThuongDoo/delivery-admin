@@ -12,13 +12,16 @@ function UpdateRestaurant() {
   const navigate = useNavigate();
   const submit = useSubmit();
   const { restaurant } = useRouteLoaderData("root");
-  const { id } = useParams();
-  const fileredRestaurant = restaurant.filter((item) => item._id === id);
+  const { restaurantId } = useParams();
+  const fileredRestaurant = restaurant.filter(
+    (item) => item._id === restaurantId
+  );
+  console.log(restaurantId);
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
       console.log(values);
-      await api.patch(`restaurants/${id}`, values);
+      await api.patch(`restaurants/${restaurantId}`, values);
       navigate(-1, { replace: true });
     } catch (error) {
       console.log(error);

@@ -5,40 +5,6 @@
   margin: 0;
   color: black;
 }
-/* Login.css */
-
-.login {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.login form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.login h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.forgotPassword {
-  text-align: right;
-  width: 100%;
-}
-
-
-.formGroup {
-  text-align: left;
-  margin-bottom: 15px;
-}
 
 label {
   display: block;
@@ -88,6 +54,44 @@ button:hover {
   color: aliceblue;
   background-color: black;
 }
+
+
+
+/* Login.css */
+
+.login {
+  max-width: 400px;
+  margin: 0 0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.login h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.forgotPassword {
+  text-align: right;
+  width: 100%;
+}
+
+
+.formGroup {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
 /* Header.css */
 
 .header {
@@ -142,7 +146,6 @@ button:hover {
 /* Dashboard */
 .dashboard {
   height: 100%;
-  /* background-color: rebeccapurple; */
   display: flex;
   padding: 2rem 0;
 }
@@ -153,23 +156,90 @@ button:hover {
 
 .dashboard >div {
   flex: 0.5;
+  padding: 0 8rem;
+}
+
+
+/* Restaurant */
+.restaurant {
+  flex:1;
+  display: flex;
+}
+
+.restaurant-sidebar{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px black solid;
+  text-align: left;
+}
+
+.restaurant-title {
+  display: flex;
+  border-bottom: 1px solid black;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem;
+  overflow: hidden;
+  height: 3rem;
+}
+
+.restaurant-title> button {
+  width: 5rem;
+}
+
+.restaurant-sidebar-nav{
+  display: flex;
+  flex-direction: column;
+}
+
+.restaurant-sidebar-nav a{
+  padding: 1rem 1rem;
+  height: 4rem;
+  font-size: 20px;
+}
+
+.restaurant-sidebar-nav a.active,
+.restaurant-sidebar-nav a:hover{
+  background-color: black;
+  color: aliceblue;
+}
+
+
+.btnBox {
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.btnBox button {
+  color: black;
+  width: 6rem;
+  background-color: aliceblue;
+}
+
+.titleBox {
+  display: flex;
+  justify-content: space-between;
 }
 
 .list {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  padding: 4rem;
+  padding: 4rem 0;
 }
 
 .list-item {
   display: flex;
-  padding: 1.5rem;
-  border: 1px solid black;
   align-items: center;
-  border-radius: 15px;
   height: 150px;
+  border-radius: 15px;
+  border: 1px solid black;
+  padding: 1.5rem;
 }
+
 
 .list-item:hover {
   background-color: black;
@@ -180,12 +250,13 @@ button:hover {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-
+  width: 100%;
 }
 
 .list-item > div:last-child{
   display: none;
 }
+
 
 .list-item:hover >div:first-child{
   display: none;
@@ -230,53 +301,72 @@ button:hover {
 }
 
 
-.btnBox {
-  padding: 0 2rem;
+.restaurant-outlet {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  width: 80%;
 }
 
-.btnBox button {
-  color: black;
-  width: 6rem;
-  background-color: aliceblue;
-}
-
-/* Restaurant */
-.restaurant {
-  flex:1;
-  display: flex;
-}
-
-.restaurant-sidebar{
-  width: 20%;
+.restaurant-outlet>div:first-child{
+  width: 30%;
   display: flex;
   flex-direction: column;
-  border-right: 1px black solid;
-  text-align: left;
+  border-right: 1px solid black;
 }
 
-.restaurant-sidebar h2{
-  border-bottom: 1px solid black;
-  padding: 1rem 2rem ;
-  padding-bottom: 0;
-  height: 3rem;
+.restaurant-outlet>div:nth-child(2){
+  width: 70%;
+}
+
+.restaurant-outlet .list {
+  gap: 0;
+  padding: 0;
+}
+
+.restaurant-outlet-item {
+  display: flex;
+  gap: 2rem;
+  height: 4rem;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.restaurant-outlet-item:hover {
+  background-color: black;
+}
+
+.restaurant-outlet-item:hover h2{
+  color: aliceblue;
+}
+
+.restaurant-outlet-item>div{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   overflow: hidden;
 }
 
-.restaurant-sidebar-nav{
-  display: flex;
+.restaurant-outlet-item button {
+  background-color: #FF3333;
+  width: 3rem;
+  height: 3rem;
+  display: block;
+  margin: auto 0
+}
+
+
+.restaurant-outlet-item img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 10px;
+}
+
+
+.restaurant-outlet .form-content {
   flex-direction: column;
 }
 
-.restaurant-sidebar-nav a{
-  padding: 1rem 2rem;
-  
-}
-
-.restaurant-sidebar-nav a.active,
-.restaurant-sidebar-nav a:hover{
-  background-color: black;
-  color: aliceblue;
+.restaurant-outlet .form-content img {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
 }

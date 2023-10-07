@@ -3,9 +3,10 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "../style.css";
 import api from "../services/api";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useSubmit } from "react-router-dom";
 
 function Login() {
+  const submit = useSubmit();
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const initialValues = {
@@ -20,14 +21,22 @@ function Login() {
     password: Yup.string().required("Password is required"),
   });
 
+  const userRole = localStorage.getItem("userRole");
+
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
       await api.post("/auth/login", values);
-      navigate("/");
     } catch (error) {
       setError(error);
     } finally {
       setSubmitting(false);
+      console.log(values);
+      submit(values, { method: "post" });
+      if (userRole === "admin") {
+        navigate("admin");
+      } else {
+        navigate("/");
+      }
       resetForm();
     }
   };

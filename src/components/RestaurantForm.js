@@ -1,16 +1,8 @@
 import React from "react";
-import { Formik, Field, useFormik, Form } from "formik";
-import { useNavigate, useRouteLoaderData, useSubmit } from "react-router-dom";
-import api from "../services/api";
+import { Formik, Field, Form } from "formik";
+import { useRouteLoaderData } from "react-router-dom";
 
-function RestaurantForm({ data, onSubmit }) {
-  const { user } = useRouteLoaderData("root");
-  let isCreate = false;
-  if (!data) {
-    data = {};
-    isCreate = true;
-    data.user = user.userId;
-  }
+function RestaurantForm({ data, onSubmit, isCreate }) {
   const initialValues = {
     name: data.name,
     image: data.image,

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import api from "../services/api";
 import "../style.css";
-import { useLoaderData, Link, useRouteLoaderData } from "react-router-dom";
+import { Link, useRouteLoaderData } from "react-router-dom";
 
 function Header() {
   const { user } = useRouteLoaderData("root");

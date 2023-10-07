@@ -5,28 +5,27 @@ import {
   RouterProvider,
   Route,
   Navigate,
+  useRouteLoaderData,
 } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
 import ErrorPage from "./errorPage";
 import Root from "./pages/Root";
-import Dashboard, { loader as dashboardLoader } from "./pages/Dashboard";
-// import CreateRestaurant from "./pages/restaurant/CreateRestaurant";
-// import UpdateRestaurant from "./pages/restaurant/UpdateRestaurant";
-
+import Dashboard from "./pages/Dashboard";
 import * as action from "./services/action";
 import * as loader from "./services/loader";
-// import Restaurant from "./pages/restaurant/Restaurant";
 import {
   CreateRestaurant,
   UpdateRestaurant,
   Restaurant,
 } from "./pages/restaurant";
-import Food from "./pages/food/Food";
+import { Food, CreateFood, UpdateFood } from "./pages/food";
 import Order from "./pages/order/Order";
+import Admin from "./pages/Admin";
 
 function App() {
+  const userRole = localStorage.getItem("userRole");
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route>
@@ -34,12 +33,18 @@ function App() {
           <Route
             path="/"
             element={<Root />}
-            loader={loader.dashboardLoader}
+            loader={loader.restaurantLoader}
             id="root"
           >
             <Route
               index
-              element={<Dashboard />}
+              element={
+                userRole === "admin" ? (
+                  <Navigate to="admin" replace />
+                ) : (
+                  <Dashboard />
+                )
+              }
               action={action.deleteRestaurantAction}
             />
             <Route
@@ -48,17 +53,39 @@ function App() {
               action={action.restaurantAction}
             />
             <Route
-              path="update-restaurant/:id"
+              path="update-restaurant/:restaurantId"
               element={<UpdateRestaurant />}
               action={action.restaurantAction}
             />
-            <Route path="restaurant/:id" element={<Restaurant />}>
-              <Route path="foods" element={<Food />} />
+            <Route
+              path="restaurant/:restaurantId"
+              element={<Restaurant />}
+              id="restaurant"
+              loader={loader.foodLoader}
+            >
+              <Route path="foods" element={<Food />}>
+                <Route
+                  path=":foodId"
+                  element={<UpdateFood />}
+                  action={action.foodAction}
+                />
+                <Route
+                  path="create"
+                  element={<CreateFood />}
+                  action={action.foodAction}
+                />
+              </Route>
               <Route path="orders" element={<Order />} />
             </Route>
+            <Route
+              path="admin"
+              element={
+                userRole === "admin" ? <Admin /> : <Navigate to="/" replace />
+              }
+            />
           </Route>
         </Route>
-        <Route path="login" element={<Login />} />
+        <Route path="login" element={<Login />} action={action.userAction} />
         <Route path="register" element={<Register />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="*" element={<Navigate to="/" replace />} />
