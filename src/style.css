@@ -1,0 +1,282 @@
+*{
+  box-sizing: border-box;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  color: black;
+}
+/* Login.css */
+
+.login {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.login h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.forgotPassword {
+  text-align: right;
+  width: 100%;
+}
+
+
+.formGroup {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+}
+
+textarea {
+  height: 100px;
+}
+
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px; /* Thêm khoảng cách trên để ngăn lỗi trôi lên lần tiếp theo */
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:disabled {
+  background-color: red;
+  cursor: not-allowed;
+}
+
+button:hover {
+  color: aliceblue;
+  background-color: black;
+}
+/* Header.css */
+
+.header {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+  padding: 0.5rem 2rem;
+}
+
+.header h2 {
+  color: aliceblue;
+}
+
+.header div {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  gap: 0.5rem;
+  height: 100%;
+}
+
+.header p{
+  color: aliceblue;
+}
+
+.header button {
+  width: fit-content;
+  background-color: transparent;
+  border: transparent;
+  color: aliceblue;
+  padding: 0;
+}
+
+.vertical-line{
+  border-left: 1px solid aliceblue;
+  height: 90%;
+  width: 1px;
+}
+
+/* Errorpage */
+#error-page{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Dashboard */
+.dashboard {
+  height: 100%;
+  /* background-color: rebeccapurple; */
+  display: flex;
+  padding: 2rem 0;
+}
+
+.dashboard button {
+  width: 200px;
+}
+
+.dashboard >div {
+  flex: 0.5;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 4rem;
+}
+
+.list-item {
+  display: flex;
+  padding: 1.5rem;
+  border: 1px solid black;
+  align-items: center;
+  border-radius: 15px;
+  height: 150px;
+}
+
+.list-item:hover {
+  background-color: black;
+  color: aliceblue;
+}
+
+.list-item > div:first-child{
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+}
+
+.list-item > div:last-child{
+  display: none;
+}
+
+.list-item:hover >div:first-child{
+  display: none;
+}
+
+.list-item:hover >div:last-child{
+  display: flex;
+}
+
+.list-item img {
+  width: 100px;
+  height: 100px;
+  border-radius: 15px;
+}
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+}
+
+.form-content {
+  display: flex;
+  padding: 4rem;
+  gap: 1.5rem;
+}
+
+.form-content img {
+  flex: 0.5;
+  border-radius: 15px;
+  width: 100px;
+
+}
+
+.form-content >div {
+  display: flex;
+  flex-direction: column;
+  flex: 0.5;
+  text-align: left;
+  gap: 1.5rem;
+}
+
+
+.btnBox {
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.btnBox button {
+  color: black;
+  width: 6rem;
+  background-color: aliceblue;
+}
+
+/* Restaurant */
+.restaurant {
+  flex:1;
+  display: flex;
+}
+
+.restaurant-sidebar{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px black solid;
+  text-align: left;
+}
+
+.restaurant-sidebar h2{
+  border-bottom: 1px solid black;
+  padding: 1rem 2rem ;
+  padding-bottom: 0;
+  height: 3rem;
+  overflow: hidden;
+}
+
+.restaurant-sidebar-nav{
+  display: flex;
+  flex-direction: column;
+}
+
+.restaurant-sidebar-nav a{
+  padding: 1rem 2rem;
+  
+}
+
+.restaurant-sidebar-nav a.active,
+.restaurant-sidebar-nav a:hover{
+  background-color: black;
+  color: aliceblue;
+}
